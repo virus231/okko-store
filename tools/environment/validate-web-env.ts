@@ -16,6 +16,22 @@ export class WebEnvVo implements IWebEnv {
   // @ts-ignore
   @Type(() => WebEnvApiVo)
   public api: WebEnvApiVo
+
+  // @ts-ignore
+  @ValidateNested()
+  // @ts-ignore
+  @Type(() => WebEnvStorage)
+  public storage: WebEnvStorage
+}
+
+class WebEnvStorage {
+  // @ts-ignore
+  @IsUrl()
+  public url: string
+
+  // @ts-ignore
+  @IsUrl()
+  public endpoint: string
 }
 
 class WebEnvApiVo {
