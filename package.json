@@ -10,6 +10,7 @@
     "start:web": "nx serve web",
     "build": "nx build",
     "test": "nx test",
+    "db:docs": "npx prisma-docs-generator serve",
     "db:docker:dev": "docker-compose -f tools/okko-environment/docker-compose-dev.yml up -d --no-recreate --remove-orphans",
     "db:migrate:dev": "npx env-cmd -f .env.local npx prisma migrate dev",
     "db:studio": "npx env-cmd -f .env.local npx prisma studio",
