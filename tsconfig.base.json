@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@okko-store/api/data-access-db": ["libs/api/data-access-db/src/index.ts"]
+      "@okko-store/api/data-access-db": ["libs/api/data-access-db/src/index.ts"],
+      "@okko-store/api/feature-home-block": ["libs/api/feature-home-block/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
