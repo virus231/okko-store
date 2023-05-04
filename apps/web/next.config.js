@@ -14,6 +14,16 @@ const nextConfig = {
   },
   experimental: {
     appDir: true
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: process.env.OKKO_WEB_STORAGE_ENDPOINT,
+        port: '',
+        pathname: '/my-bucket/**'
+      }
+    ]
   }
 }
 
