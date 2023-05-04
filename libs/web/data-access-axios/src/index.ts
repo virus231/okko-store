@@ -1,1 +1,1 @@
-export * from './lib/web-data-access-axios'
+export * from './lib/instance'

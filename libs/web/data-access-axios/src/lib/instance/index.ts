@@ -23,10 +23,7 @@ export class MainApi {
   }
   
   public getUsers() {
-    return this.request.get<IUser>("/users")
+    return this.request.get("/users")
   }
-  
-  
-  
 
 }
