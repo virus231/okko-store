@@ -22,6 +22,6 @@ export class MainApi {
   }
 
   public getUsers() {
-    return this.request.get('/users')
+    return this.request.get('/user')
   }
 }
