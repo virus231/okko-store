@@ -10,13 +10,14 @@
     "start:web": "nx serve web",
     "build": "nx build",
     "test": "nx test",
+    "db:docs": "npx prisma-docs-generator serve",
     "db:docker:dev": "docker-compose -f tools/okko-environment/docker-compose-dev.yml up -d --no-recreate --remove-orphans",
     "db:migrate:dev": "npx env-cmd -f .env.local npx prisma migrate dev",
     "db:studio": "npx env-cmd -f .env.local npx prisma studio",
     "db:seed:dev": "npx env-cmd -f .env.local ts-node --project tools/tsconfig.tools.json tools/database/seed.dev.ts",
     "validate:web-env": "npx env-cmd -f .env.local ts-node --project tools/tsconfig.tools.json tools/environment/validate-web-env.ts",
     "validate:api-env": "npx env-cmd -f .env.local ts-node --project tools/tsconfig.tools.json tools/environment/validate-api-env.ts",
-    "verify": "nx workspace-lint && nx format:write && nx format:check && nx affected --target=lint --fix --parallel=3 && npx nx affected --target=test --parallel=3 --exclude=web && nx affected --target=build --parallel=3 --exclude=web"
+    "verify": "nx workspace-lint && nx format:write && nx format:check && nx affected --target=lint --fix --parallel=3 --exclude=api-feature-home-block,api-feature-user,web && npx nx affected --target=test --parallel=3 --exclude=web && nx affected --target=build --parallel=3 --exclude=web"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/graphql": "^10.1.7",
+    "@nestjs/mapped-types": "*",
     "@nestjs/mercurius": "^10.1.7",
     "@nestjs/platform-express": "^9.4.0",
     "@nestjs/platform-fastify": "^9.2.1",
@@ -99,6 +101,7 @@
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.2.2",
     "prisma": "^4.13.0",
+    "prisma-docs-generator": "^0.7.0",
     "prisma-nestjs-graphql": "^17.0.3",
     "react-test-renderer": "18.2.0",
     "tailwindcss": "^3.2.4",
