@@ -18,7 +18,7 @@
       "@okko-store/api/data-access-db": ["libs/api/data-access-db/src/index.ts"],
       "@okko-store/api/feature-home-block": ["libs/api/feature-home-block/src/index.ts"],
       "@okko-store/api/feature-user": ["libs/api/feature-user/src/index.ts"],
-      "@okko-store/web/data-access-axios": ["libs/web/data-access-axios/src/index.ts"],
+      "@okko-store/web/data-access-axios": ["libs/web/data-access-axios/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
