@@ -19,9 +19,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: process.env.OKKO_WEB_STORAGE_ENDPOINT,
-        port: '',
-        pathname: '/my-bucket/**'
+        hostname: process.env.OKKO_WEB_STORAGE_ENDPOINT
       }
     ]
   }
