@@ -1,0 +1,26 @@
+{
+  "name": "web-data-access-axios",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/data-access-axios/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/web/data-access-axios",
+        "main": "libs/web/data-access-axios/src/index.ts",
+        "tsConfig": "libs/web/data-access-axios/tsconfig.lib.json",
+        "assets": ["libs/web/data-access-axios/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/web/data-access-axios/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["scope:web"]
+}
