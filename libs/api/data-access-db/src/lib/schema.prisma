@@ -2,6 +2,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("OKKO_DB_URL")
@@ -13,4 +17,77 @@ model User {
   email    String  @unique
   name     String?
   password String
+}
+
+model HomeBlock {
+  id String @id @default(uuid())
+  /// @Validator.IsString()
+  /// @Validator.MaxLength(100)
+  /// @Validator.MinLength(3)
+  navigationPath String
+  image   Image  @relation(fields: [imageId], references: [id])
+  imageId String @unique
+}
+
+model Product {
+  id String @id @default(uuid())
+  /// @Validator.IsString()
+  /// @Validator.MaxLength(100)
+  /// @Validator.MinLength(3)
+  name String @unique
+  /// @Validator.@IsInt()
+  /// @Validator.@Min(1)
+  /// @Validator.@Max(100_000)
+  price Int
+  /// @Validator.@IsInt()
+  /// @Validator.@Min(1)
+  /// @Validator.@Max(100_000)
+  discountPrice Int?
+  images          Image[]
+  availableColors RgbColor[]
+}
+
+model Image {
+  id String @id @default(uuid())
+  /// @Validator.IsString()
+  /// @Validator.MaxLength(100)
+  /// @Validator.MinLength(3)
+  title String?
+  /// @Validator.IsString()
+  /// @Validator.MaxLength(100)
+  /// @Validator.MinLength(3)
+  imagePath String
+  rgbBackground   RgbColor @relation(fields: [rgbBackgroundId], references: [id])
+  rgbBackgroundId String
+  //----Relations----//
+  /// @HideField()
+  homeBlock HomeBlock?
+  /// @HideField()
+  product   Product? @relation(fields: [productId], references: [id])
+  /// @HideField()
+  productId String?
+}
+
+model RgbColor {
+  id String @id @default(uuid())
+  /// @Validator.IsInt()
+  /// @Validator.Min(0)
+  /// @Validator.Max(255)
+  r Int
+  /// @Validator.IsInt()
+  /// @Validator.Min(0)
+  /// @Validator.Max(255)
+  g Int
+  /// @Validator.IsInt()
+  /// @Validator.Min(0)
+  /// @Validator.Max(255)
+  b Int
+  /// @HideField()
+  a Float?
+  //----Relations----//
+  /// @HideField()
+  product   Product? @relation(fields: [productId], references: [id])
+  /// @HideField()
+  productId String?
+  Image     Image[]
 }
